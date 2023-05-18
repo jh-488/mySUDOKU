@@ -160,7 +160,7 @@ export class GridComponent implements OnInit {
         const puzzleIndex = Math.floor(Math.random() * 5);
         
         if(lvl === 'easy') {
-          const EpuzzlesArray = await fetch(`mySUDOKU/docs/assets/puzzles/easy.json?t=${timestamp}`);
+          const EpuzzlesArray = await fetch(`/assets/puzzles/easy.json?t=${timestamp}`);
           const Epuzzles = await EpuzzlesArray.json();
           this.squares = Epuzzles.easyPuzzles[puzzleIndex]['grid'];
         }
