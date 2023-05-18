@@ -154,27 +154,32 @@ export class GridComponent implements OnInit {
     // generate a random puzzle from the json file depending on the chosen difficulty
     // needs to use the timestamp or else the solved puzzles will be cashed in the browser
     async selectDifficulty(lvl : string) {
-      const timestamp = new Date().getTime();
+      try {
+        const timestamp = new Date().getTime();
 
-      const EpuzzlesArray = await fetch(`../../assets/puzzles/easy.json?t=${timestamp}`);
-      const MpuzzlesArray = await fetch(`../../assets/puzzles/medium.json?t=${timestamp}`);
-      const HpuzzlesArray = await fetch(`../../assets/puzzles/hard.json?t=${timestamp}`);
-
-      const Epuzzles = await EpuzzlesArray.json();
-      const Mpuzzles = await MpuzzlesArray.json();
-      const Hpuzzles = await HpuzzlesArray.json();
-      
-      const puzzleIndex = Math.floor(Math.random() * 5);
-      
-      if(lvl === 'easy') {
-        this.squares = Epuzzles.easyPuzzles[puzzleIndex]['grid'];
+        const EpuzzlesArray = await fetch(`../../assets/puzzles/easy.json?t=${timestamp}`);
+        const MpuzzlesArray = await fetch(`../../assets/puzzles/medium.json?t=${timestamp}`);
+        const HpuzzlesArray = await fetch(`../../assets/puzzles/hard.json?t=${timestamp}`);
+  
+        const Epuzzles = await EpuzzlesArray.json();
+        const Mpuzzles = await MpuzzlesArray.json();
+        const Hpuzzles = await HpuzzlesArray.json();
+        
+        const puzzleIndex = Math.floor(Math.random() * 5);
+        
+        if(lvl === 'easy') {
+          this.squares = Epuzzles.easyPuzzles[puzzleIndex]['grid'];
+        }
+        if(lvl === 'medium') {
+          this.squares = Mpuzzles.mediumPuzzles[puzzleIndex]['grid'];
+        }
+        if(lvl === 'hard') {
+          this.squares = Hpuzzles.hardPuzzles[puzzleIndex]['grid'];
+        }
       }
-      if(lvl === 'medium') {
-        this.squares = Mpuzzles.mediumPuzzles[puzzleIndex]['grid'];
-      }
-      if(lvl === 'hard') {
-        this.squares = Hpuzzles.hardPuzzles[puzzleIndex]['grid'];
-      }
+      catch(error) {
+        console.error('An error occurred:', error);
+      };
 
       // hide the buttons after the level is chosen
       this.displayLvls = false;
