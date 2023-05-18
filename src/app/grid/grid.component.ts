@@ -156,24 +156,22 @@ export class GridComponent implements OnInit {
     async selectDifficulty(lvl : string) {
       try {
         const timestamp = new Date().getTime();
-
-        const EpuzzlesArray = await fetch(`/assets/puzzles/easy.json?t=${timestamp}`);
-        const MpuzzlesArray = await fetch(`/assets/puzzles/medium.json?t=${timestamp}`);
-        const HpuzzlesArray = await fetch(`/assets/puzzles/hard.json?t=${timestamp}`);
-  
-        const Epuzzles = await EpuzzlesArray.json();
-        const Mpuzzles = await MpuzzlesArray.json();
-        const Hpuzzles = await HpuzzlesArray.json();
         
         const puzzleIndex = Math.floor(Math.random() * 5);
         
         if(lvl === 'easy') {
+          const EpuzzlesArray = await fetch(`mySUDOKU/docs/assets/puzzles/easy.json?t=${timestamp}`);
+          const Epuzzles = await EpuzzlesArray.json();
           this.squares = Epuzzles.easyPuzzles[puzzleIndex]['grid'];
         }
         if(lvl === 'medium') {
+          const MpuzzlesArray = await fetch(`/assets/puzzles/medium.json?t=${timestamp}`);
+          const Mpuzzles = await MpuzzlesArray.json();
           this.squares = Mpuzzles.mediumPuzzles[puzzleIndex]['grid'];
         }
         if(lvl === 'hard') {
+          const HpuzzlesArray = await fetch(`/assets/puzzles/hard.json?t=${timestamp}`);
+          const Hpuzzles = await HpuzzlesArray.json();
           this.squares = Hpuzzles.hardPuzzles[puzzleIndex]['grid'];
         }
       }
