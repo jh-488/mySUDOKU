@@ -157,9 +157,9 @@ export class GridComponent implements OnInit {
       try {
         const timestamp = new Date().getTime();
 
-        const EpuzzlesArray = await fetch(`../../assets/puzzles/easy.json?t=${timestamp}`);
-        const MpuzzlesArray = await fetch(`../../assets/puzzles/medium.json?t=${timestamp}`);
-        const HpuzzlesArray = await fetch(`../../assets/puzzles/hard.json?t=${timestamp}`);
+        const EpuzzlesArray = await fetch(`/assets/puzzles/easy.json?t=${timestamp}`);
+        const MpuzzlesArray = await fetch(`/assets/puzzles/medium.json?t=${timestamp}`);
+        const HpuzzlesArray = await fetch(`/assets/puzzles/hard.json?t=${timestamp}`);
   
         const Epuzzles = await EpuzzlesArray.json();
         const Mpuzzles = await MpuzzlesArray.json();
