@@ -1,0 +1,246 @@
+// Header content
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    font-family: 'Amita', cursive;
+
+}
+
+header h1 {
+    margin: 0;
+    font-weight: bolder;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+header .howTo {
+    position: relative;
+    margin: 0;
+    margin-right: 50px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+header .instructions {
+    position: absolute;
+    top: 10%;
+    right: 50px;
+    background-color: rgb(89, 110, 170);
+    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+    width: 450px;
+    height: 280px;
+    overflow: auto;
+    font-family: Arial, sans-serif ;
+    font-size: 20px;
+    border-radius: 5%;
+}
+
+.instructions p {
+    white-space: normal; 
+    word-wrap: break-word;
+}
+
+// Grid and Squares
+.grid-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.grid {
+    margin-left: 300px;
+    margin-top: 50px; 
+    border: 3px solid black;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 630px; 
+    margin: 0 auto; 
+}
+  
+.col {
+    display: flex;
+    flex: 1 0 0;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+  
+
+app-square {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+// Solution squares
+.inputs-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.inputs {
+    width: 60px;
+    height: 60px;
+    margin: 2px;
+    background-color: azure;
+    border: 1px solid black;
+}
+
+// Buttons
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin-left: 200px;
+}
+
+.buttons button {
+    width: 100px;
+    height: 50px;
+    border : 1px solid black;
+    border-radius: 10%;
+    background-color: rgb(162, 143, 222);
+    cursor: pointer;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.levels {
+    position: absolute;
+    left: 150px;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.levels button {
+    width: 80px;
+    height: 30px;
+    border : 1px solid black;
+    border-radius: 10%;
+    background-color: rgb(162, 143, 222);
+    cursor: pointer;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+// Displayed messages
+.messages {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    padding: 10px;
+}
+
+.messages p{
+    font-family: 'Amita', cursive;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#invalid {
+    color: rgb(236, 66, 66);
+}
+
+#hasWon {
+    color: rgb(78, 93, 170);
+}
+
+
+@media screen and (max-width: 1000px){
+    header h1 {
+        font-size: 40px;
+    }
+    
+    header .howTo {
+        margin-right: 5px;
+        font-size: 20px;
+    }
+    
+    header .instructions {
+        top: 10%;
+        right: 10px;
+        width: 410px;
+        height: 280px;
+        font-size: 20px;
+    }
+
+    .grid-buttons {
+        display:block;
+    }
+
+    .grid {
+        margin: auto;
+        padding-top: 70px;
+        border: 0;
+    }
+
+    .row {
+        width: 350px;
+    }
+
+    .col {
+        height: 40px;
+    }
+
+    app-square {
+        font-size: 20px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 5px;
+        margin-left: 20px;
+        margin-top: 50px;
+    }
+    
+    .buttons button {
+        width: 90px;
+        height: 30px;
+    }
+
+    .levels {
+        position: absolute;
+        left: 360px;
+        top: 21%;
+        transform: translate(-100%, -50%);
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .levels button {
+        width: 60px;
+        height: 30px;
+    }
+
+    .inputs {
+        width: 40px;
+        height: 40px;
+    }
+
+    .messages {
+        translate: 5px 650px;
+    }
+    
+    .messages p{
+        font-size: 30px;
+    }
+}

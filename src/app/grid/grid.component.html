@@ -1,0 +1,65 @@
+<header>
+  <h1 id="appHeader">mySUDOKU</h1>
+  <p class="howTo" (click)="showInstructions = !showInstructions">How To Play?</p>
+  <div class="instructions" *ngIf="showInstructions">
+    <p style="margin-left: 20px;">Choose a number from the bottom boxes and put it in the desired puzzle square.<br>
+      Use the different options to play the game:</p>
+      <ul>
+        <li><span style="font-weight: bolder;">Reset:</span> To start a new game.</li>
+        <li><span style="font-weight: bolder;">Solve:</span> To solve the puzzle.</li>
+        <li><span style="font-weight: bolder;">Generate:</span> To generate a puzzle depending on the chosen difficulty.</li>
+        <li><span style="font-weight: bolder;">Check:</span> To check if the given solution is correct.</li>
+    </ul>
+  </div>
+</header>
+
+
+
+<div class="messages">
+  <div *ngIf="notValid">
+    <p id="invalid">Invalid Input!!</p>
+  </div>
+
+  <div>
+    <p id="hasWon" *ngIf="hasWon">Congrats you WON!!</p>
+  </div>
+</div>
+
+
+<div class="grid-buttons">
+  <div class="buttons">
+    <button class="resetBtn" (click)="newGame()">Reset</button>
+  
+    <button class="solveBtn" (click)="solve()">Solve</button>
+  
+    <button class="generateBtn" (click)="generatePuzzle()">Generate</button>
+  
+    <button class="checkBtn" (click)="checkSolution()">Check</button>
+  </div>
+
+  <div class="levels" *ngIf="displayLvls">
+    <button (click)="selectDifficulty('easy')">Easy</button>
+    <button (click)="selectDifficulty('medium')">Medium</button>
+    <button (click)="selectDifficulty('hard')">Hard</button>
+  </div>
+
+  <div class="grid">
+    <div *ngFor="let row of squares; let rowIndex = index" class="row">
+      <div *ngFor="let col of row; let colIndex = index" class="col">
+        <app-square [value]="col" [ngStyle]="{'background-color': col !== 0 ? 'lightgray' : 'azure',
+        'border-top': rowIndex % 3 === 0 ? '3px solid black' : '1px solid gray',
+        'border-left': colIndex % 3 === 0 ? '3px solid black' : '1px solid gray',
+        'border-right': colIndex % 3 === 2 ? '3px solid black' : '1px solid gray',
+        'border-bottom': rowIndex % 3 === 2 ? '3px solid black' : '1px solid gray'}" 
+        (click)="fillSquare(rowIndex, colIndex)">
+        </app-square>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="inputs-container">
+  <app-square class="inputs" *ngFor="let solution of solutions" [value]="solution" (click)="selectSolution(solution)">
+  </app-square>
+</div>
